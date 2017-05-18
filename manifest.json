@@ -1,8 +1,8 @@
 {
-  "name": "CHANGE THIS : Extension boilerplate",
+  "name": "ImgGenie",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.com",
+  "description": "Chrome extension used for live-on-page image manipulation.",
   "homepage_url": "http://extensionizr.com",
   "icons": {
     "16": "icons/icon16.png",
@@ -14,25 +14,19 @@
     "scripts": [
       "src/bg/background.js"
     ],
-    "persistent": false
+    "persistent": true
   },
-  "options_page": "src/options_custom/index.html",
-  "page_action": {
+  "content_scripts": [{
+    "matches": ["https://*/*"],
+    "js": ["src/injects/injects.js"]
+  }],
+  "browser_action": {
     "default_icon": "icons/icon19.png",
-    "default_title": "page action demo",
-    "default_popup": "src/page_action/page_action.html"
+    "default_title": "browser action demo",
+    "default_popup": "src/browser_action/browser_action.html"
   },
   "permissions": [
-    "contextMenus"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.google.com/*"
-      ],
-      "js": [
-        "src/inject/inject.js"
-      ]
-    }
+    "contextMenus",
+    "<all_urls>"
   ]
 }
