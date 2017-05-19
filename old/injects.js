@@ -9,6 +9,7 @@ document.addEventListener("contextmenu", function(event){
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if(request == "getClickedEl") {
+        console.log("element:", clickedEl);
         sendResponse(clickedEl);
     }
 });

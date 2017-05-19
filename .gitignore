@@ -71,3 +71,10 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/osx,linux,windows,visualstudiocode
+
+
+
+npm-debug.log
+node_modules/
+dist/js
+tmp/
