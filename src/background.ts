@@ -12,54 +12,49 @@ const sendMenuChoice = function(tab, chosen_effect: Effect) {
     });
 }
 
-// REGION BEGIN: Context menu
+const createMultipleEffectButtons = function(buttons: {title: string, effect: Effect}[], parent_id = null) {
+    for (let i = 0; i < buttons.length; i++) {
+        chrome.contextMenus.create({
+            title: buttons[i].title, 
+            contexts: ["image"],
+            parentId: parent_id,
+            onclick: (info, tab) => {
+                logOnClick(info, tab);
+                sendMenuChoice(tab, buttons[i].effect);
+            }
+        });
+    }
+}
 
-let remove_channel = chrome.contextMenus.create({
+createMultipleEffectButtons([
+    {
+        title: "Red",
+        effect: Effect.remove_red
+    },
+    {
+        title: "Green",
+        effect: Effect.remove_green
+    },
+    {
+        title: "Blue",
+        effect: Effect.remove_blue
+    },
+    {
+        title: "Alpha",
+        effect: Effect.remove_alpha
+    }
+], chrome.contextMenus.create({
     title: "Remove Channel", 
     contexts: ["image"]
-});
-chrome.contextMenus.create({
-    title: "Red", 
-    contexts: ["image"],
-    parentId: remove_channel,
-    onclick: (info, tab) => {
-        logOnClick(info, tab);
-        sendMenuChoice(tab, Effect.remove_red);
-    }
-});
-chrome.contextMenus.create({
-    title: "Green", 
-    contexts: ["image"],
-    parentId: remove_channel,
-    onclick: (info, tab) => {
-        logOnClick(info, tab);
-        sendMenuChoice(tab, Effect.remove_green);
-    }
-});
-chrome.contextMenus.create({
-    title: "Blue", 
-    contexts: ["image"],
-    parentId: remove_channel,
-    onclick: (info, tab) => {
-        logOnClick(info, tab);
-        sendMenuChoice(tab, Effect.remove_blue);
-    }
-});
-chrome.contextMenus.create({
-    title: "Alpha", 
-    contexts: ["image"],
-    parentId: remove_channel,
-    onclick: (info, tab) => {
-        logOnClick(info, tab);
-        sendMenuChoice(tab, Effect.remove_alpha);
-    }
-});
+}));
 
-chrome.contextMenus.create({
-    title: "Invert Colors", 
-    contexts: ["image"],
-    onclick: (info, tab) => {
-        logOnClick(info, tab);
-        sendMenuChoice(tab, Effect.invert);
+createMultipleEffectButtons([
+    {
+        title: "Invert Colors",
+        effect: Effect.invert
+    },
+    {
+        title: "Grey Scale",
+        effect: Effect.greyscale
     }
-});
+]);

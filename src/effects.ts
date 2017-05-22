@@ -1,5 +1,13 @@
 import { Effect } from './globals';
-export let effects: ((canvas: HTMLCanvasElement) => void)[] = [];
+
+export const effects: ((canvas: HTMLCanvasElement) => void)[] = [];
+
+interface IChannels {
+    red?: boolean
+    green?: boolean
+    blue?: boolean
+     alpha?: boolean
+}
 
 const effectCore = function(canvas: HTMLCanvasElement, effectBody: (imgData: ImageData) => void) {
     let ctx = canvas.getContext('2d');
@@ -8,7 +16,7 @@ const effectCore = function(canvas: HTMLCanvasElement, effectBody: (imgData: Ima
     ctx.putImageData(imgData, 0, 0);
 }
 
-const removeChannels = function(imgData: ImageData, channels: {red?: boolean, green?: boolean, blue?: boolean, alpha?: boolean}) {
+const removeChannels = function(imgData: ImageData, channels: IChannels) {
     var data = imgData.data;
     for(var i=0; i<data.length; i+=4) { /* RGBA */
         data[i] = channels.red ? 0 : data[i]; 
@@ -18,8 +26,17 @@ const removeChannels = function(imgData: ImageData, channels: {red?: boolean, gr
     }
 }
 
+// REGION BEGIN: Effects
 
-effects[Effect.invert] = (canvas: HTMLCanvasElement) => {
+const removeChannelsEffect = function(canvas: HTMLCanvasElement, channels: IChannels) {
+    effectCore(canvas, (imgData: ImageData) => removeChannels(imgData,  channels) );
+}
+effects[Effect.remove_red] = (canvas) => removeChannelsEffect(canvas, {red: true});
+effects[Effect.remove_green] = (canvas) => removeChannelsEffect(canvas, {green: true});
+effects[Effect.remove_blue] = (canvas) => removeChannelsEffect(canvas, {blue: true});
+effects[Effect.remove_alpha] = (canvas) => removeChannelsEffect(canvas, {alpha: true});
+
+effects[Effect.invert] = function(canvas: HTMLCanvasElement) {
     effectCore(canvas, (imgData: ImageData) => {
         var data = imgData.data;
         for(var i=0; i<data.length; i+=4) { /* RGBA */
@@ -30,32 +47,15 @@ effects[Effect.invert] = (canvas: HTMLCanvasElement) => {
     });
 }
 
-effects[Effect.remove_red] = (canvas: HTMLCanvasElement) => {
+effects[Effect.greyscale] = function(canvas: HTMLCanvasElement) {
     effectCore(canvas, (imgData: ImageData) => {
-        removeChannels(imgData, {
-            red: true
-        });
+        var data = imgData.data;
+        for(var i=0; i<data.length; i+=4) { /* RGBA */
+            let r = data[i];
+            let g = data[i+1];
+            let b =  data[i+2];
+            let luminosity = 0.2126*r + 0.7152*g + 0.0722*b;
+            data[i] = data[i+1] = data[i+2] = luminosity;
+        }
     });
 }
-effects[Effect.remove_green] = (canvas: HTMLCanvasElement) => {
-    effectCore(canvas, (imgData: ImageData) => {
-        removeChannels(imgData, {
-            green: true
-        });
-    });
-}
-effects[Effect.remove_blue] = (canvas: HTMLCanvasElement) => {
-    effectCore(canvas, (imgData: ImageData) => {
-        removeChannels(imgData, {
-            blue: true
-        });
-    });
-}
-effects[Effect.remove_alpha] = (canvas: HTMLCanvasElement) => {
-    effectCore(canvas, (imgData: ImageData) => {
-        removeChannels(imgData, {
-            alpha: true
-        });
-    });
-}
-
