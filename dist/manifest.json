@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "ImgGenie",
-  "description": "Chrome extension used for live-on-page image manipulation.",
+  "description": "Silly extension for manipulating images on websites.",
   "version": "1.0",
 
   "options_ui": {
