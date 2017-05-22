@@ -1,4 +1,5 @@
 export enum Effect {
+    reset,
     remove_red,
     remove_green,
     remove_blue,
@@ -6,7 +7,10 @@ export enum Effect {
     invert,
     greyscale,
     boxblur,
-    sharpen
+    sharpen,
+    sobelfilter,
+    highlight_edges,
+    threshold
 }
 
 //TODO: Implement Convolution filters after having read this guide https://www.html5rocks.com/en/tutorials/canvas/imagefilters/

@@ -1,18 +1,18 @@
 {
-  "name": "chrome-extension-typescript-starter",
+  "name": "ImgGenie",
   "version": "1.0.0",
-  "description": "chrome-extension-typescript-starter",
+  "description": "Silly extension for manipulating images on websites.",
   "main": "index.js",
   "scripts": {
     "start": "npm run watch",
     "build": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack -w"
   },
-  "author": "",
+  "author": "Olian04",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
+    "url": "https://github.com/Olian04/ImgGenie.git"
   },
   "dependencies": {
     "jquery": "~3.2.1",

@@ -2,6 +2,7 @@ import * as $ from 'jquery';
 import { Effect } from './globals';
 import { effects } from './effects';
 
+let clickedImageSource: string = null;
 let clickedEl: Element = null;
 $(document).contextmenu((eventObject: JQueryMouseEventObject) => {
     // Locates the target of the right click that opened the context menu.
@@ -10,11 +11,20 @@ $(document).contextmenu((eventObject: JQueryMouseEventObject) => {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.chosen_effect !== undefined) {
-        replaceImage(<HTMLImageElement>clickedEl, request.chosen_effect);
+        let img = <HTMLImageElement>clickedEl;
+        if (!img.getAttribute("original-source")) {
+            img.setAttribute("original-source", img.src); // Store the original image
+        }
+        replaceImage(img, request.chosen_effect);
     }
 });
 
 const replaceImage = function(img: HTMLImageElement, chosenEffect: Effect) {
+    if (chosenEffect === Effect.reset) {
+        img.src = img.getAttribute("original-source"); // Fetch original image
+        img.removeAttribute("original-source"); // Cleanup
+        return;
+    }
     let canvas = getCanvasFromImageTag(img);
     effects[chosenEffect](canvas);
     img.src = canvas.toDataURL("image/png");

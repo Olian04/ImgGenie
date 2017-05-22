@@ -35,6 +35,14 @@ const createMultipleEffectButtons = function(buttons: {title: string, effect: Ef
 
 createMultipleEffectButtons([
     {
+        title: "Reset",
+        effect: Effect.reset
+    }
+]);
+
+
+createMultipleEffectButtons([
+    {
         title: "Remove Red",
         effect: Effect.remove_red
     },
@@ -60,6 +68,10 @@ createMultipleEffectButtons([
     {
         title: "Grey Scale",
         effect: Effect.greyscale
+    }, 
+    {
+        title: "Threshold (avg. lum.)",
+        effect: Effect.threshold
     }
 ], "Colors");
 
@@ -71,5 +83,16 @@ createMultipleEffectButtons([
     {
         title: "Sharpen",
         effect: Effect.sharpen
+    }, 
+    {
+        title: "Sobel",
+        effect: Effect.sobelfilter
     }
 ], "Filters");
+
+createMultipleEffectButtons([
+    {
+        title: "Highlight Edges",
+        effect: Effect.highlight_edges
+    }
+], "Composite");
