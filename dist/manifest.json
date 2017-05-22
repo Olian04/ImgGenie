@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
+  "name": "ImgGenie",
+  "description": "Chrome extension used for live-on-page image manipulation.",
   "version": "1.0",
 
   "options_ui": {
@@ -29,6 +29,7 @@
   "permissions": [
     "contextMenus",
     "storage",
+    "http://*/*",
     "<all_urls>"
   ]
 }
