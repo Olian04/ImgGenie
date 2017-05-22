@@ -11,12 +11,13 @@ Silly extension for manipulating images on websites.
 * [X] Grey scale
 * [ ] Color mask
 * [X] Negate color channel
-* [ ] Edge mask
+* [X] Edge detection
 * [ ] Gaussian blur
 * [X] Box blur
 * [X] Sharpen
+* [X] Sobel Filter
 * [ ] Arbitrary Convolution filter
-* [ ] Revert to original 
+* [X] Revert to original 
 
 ### **Every img on page _(Context menu: on tab)_**
 * [ ] Apply one of the effects to every image on the page _(Effect all)_
