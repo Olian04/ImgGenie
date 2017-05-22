@@ -13,7 +13,8 @@ Silly extension for manipulating images on websites.
 * [X] Negate color channel
 * [ ] Edge mask
 * [ ] Gaussian blur
-* [ ] Sharpen
+* [X] Box blur
+* [X] Sharpen
 * [ ] Arbitrary Convolution filter
 * [ ] Revert to original 
 
