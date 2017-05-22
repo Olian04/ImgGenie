@@ -155,3 +155,12 @@ effects[Effect.highlight_edges] = function(canvas: HTMLCanvasElement) {
     effects[Effect.greyscale](canvas);
     effects[Effect.invert](canvas);
 }
+
+effects[Effect.matrix] = function(canvas: HTMLCanvasElement) {
+    effects[Effect.remove_green](canvas);
+    effects[Effect.invert](canvas);
+    effects[Effect.sobelfilter](canvas);
+    effects[Effect.sharpen](canvas);
+    effects[Effect.sharpen](canvas);
+    effects[Effect.remove_red](canvas);
+}

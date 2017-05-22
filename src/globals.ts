@@ -10,7 +10,8 @@ export enum Effect {
     sharpen,
     sobelfilter,
     highlight_edges,
-    threshold
+    threshold,
+    matrix
 }
 
 //TODO: Implement Convolution filters after having read this guide https://www.html5rocks.com/en/tutorials/canvas/imagefilters/

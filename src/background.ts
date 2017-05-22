@@ -1,9 +1,10 @@
 import { Effect } from './globals';
+import { effects } from './effects';
 
 const logOnClick = function(info, tab) {
     console.log("item " + info.menuItemId + " was clicked");
-    console.log("info: " + JSON.stringify(info));
-    console.log("tab: " + JSON.stringify(tab));
+    //console.log("info: " + JSON.stringify(info));
+    //console.log("tab: " + JSON.stringify(tab));
 }
 
 const sendMenuChoice = function(tab, chosen_effect: Effect) {
@@ -94,5 +95,9 @@ createMultipleEffectButtons([
     {
         title: "Highlight Edges",
         effect: Effect.highlight_edges
+    }, 
+    {
+        title: "Enter the matirx",
+        effect: Effect.matrix
     }
 ], "Composite");
