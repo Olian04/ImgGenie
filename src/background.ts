@@ -12,6 +12,8 @@ const sendMenuChoice = function(tab, chosen_effect: Effect) {
     });
 }
 
+// REGION BEGIN: Context menu
+
 let remove_channel = chrome.contextMenus.create({
     title: "Remove Channel", 
     contexts: ["image"]
