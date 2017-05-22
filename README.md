@@ -15,6 +15,7 @@ Silly extension for manipulating images on websites.
 * [ ] Gaussian blur
 * [X] Box blur
 * [X] Sharpen
+* [X] Sobel Filter
 * [ ] Arbitrary Convolution filter
 * [X] Revert to original 
 
