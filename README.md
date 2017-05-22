@@ -2,6 +2,8 @@
 Chrome extension used for live-on-page image manipulation.
 
 ## Planned feature
+* [ ] Empty checkbox means that the feature is __Planed__
+* [X] Checked checkbox meand that the feature is __Implemented__
 ### **Single img effects _(Context menu: on image)_**
 * [ ] Rotate
 * [ ] Flip
