@@ -3,7 +3,7 @@
 
   "name": "ImgGenie",
   "description": "Silly extension for manipulating images on websites.",
-  "version": "1.0",
+  "version": "0.2",
 
   "options_ui": {
     "page": "options.html",
