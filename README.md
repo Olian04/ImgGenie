@@ -1,5 +1,5 @@
 # ImgGenie
-Chrome extension used for live-on-page image manipulation.
+Silly extension for manipulating images on websites.
 
 ## Planned feature
 * [ ] Empty checkbox means that the feature is __Planed__
