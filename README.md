@@ -32,3 +32,6 @@ Silly extension for manipulating images on websites.
     * [ ] White list
     * [ ] Black list
 
+
+## Credit
+Icon: https://pixabay.com/sv/genie-lampa-magi-s%C3%B6t-sp%C3%B6ke-312442/
