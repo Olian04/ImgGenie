@@ -18,6 +18,7 @@ Silly extension for manipulating images on websites.
 * [X] Sobel Filter
 * [ ] Arbitrary Convolution filter
 * [X] Revert to original 
+* [X] Random filter
 
 ### **Every img on page _(Context menu: on tab)_**
 * [ ] Apply one of the effects to every image on the page _(Effect all)_
