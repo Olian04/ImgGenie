@@ -34,4 +34,5 @@ Silly extension for manipulating images on websites.
 
 
 ## Credit
-Icon: https://pixabay.com/sv/genie-lampa-magi-s%C3%B6t-sp%C3%B6ke-312442/
+Template: https://github.com/chibat/chrome-extension-typescript-starter <br> 
+Icon: https://pixabay.com/sv/genie-lampa-magi-s%C3%B6t-sp%C3%B6ke-312442/ <br>
