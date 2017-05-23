@@ -32,6 +32,7 @@ const convolutionFilter = function(imgData: ImageData, filter: number[]): ImageD
             let k = i+j*4-(4*4) ; // k = pixel to set + current filter index * RGBA - (offset to reach beginning of filter * RGBA)
             if (k < 0 || k >= originData.length) {
                 continue; // If k is outside the image
+                // Known bug: Since im not keeping track of image width in this process, at the edges of the image, one pixel from the previous/next row will be used in the matrix for the current pixel.
             }
             r += originData[k] * filter[j];
             g += originData[k+1] * filter[j];
