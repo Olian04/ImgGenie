@@ -2,7 +2,6 @@ import * as $ from 'jquery';
 import { Effect } from './globals';
 import { effects } from './effects';
 
-let clickedImageSource: string = null;
 let clickedEl: Element = null;
 $(document).contextmenu((eventObject: JQueryMouseEventObject) => {
     // Locates the target of the right click that opened the context menu.
