@@ -8,12 +8,14 @@ export enum Effect {
     invert,
     greyscale,
     boxblur,
+    gaussianblur,
     sharpen,
     sobelfilter,
     highlight_edges,
     threshold,
     matrix,
-    custom_convolution
+    custom_convolution,
+    hardblur
 }
 
 //TODO: Implement Convolution filters after having read this guide https://www.html5rocks.com/en/tutorials/canvas/imagefilters/

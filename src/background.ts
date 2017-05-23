@@ -92,6 +92,10 @@ createMultipleEffectButtons([
         effect: Effect.boxblur
     },
     {
+        title: "Gaussian Blur",
+        effect: Effect.gaussianblur
+    },
+    {
         title: "Sharpen",
         effect: Effect.sharpen
     }, 
@@ -109,5 +113,9 @@ createMultipleEffectButtons([
     {
         title: "Enter the matirx",
         effect: Effect.matrix
+    }, 
+    {
+        title: "Hard blur",
+        effect: Effect.hardblur
     }
 ], "Composite");

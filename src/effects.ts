@@ -21,15 +21,16 @@ const effectCore = function(canvas: HTMLCanvasElement, effectBody: (imgData: Ima
 }
 
 const convolutionFilter = function(imgData: ImageData, filter: number[]): ImageData {
-    if (filter.length !== 9) {
-        throw RangeError("Filter needs to be an array of 9 numbers. This represents a flattened 3x3 matrix");
+    if (filter.length % 2 === 0) {
+        throw RangeError("Filter needs to be a flattened A*A matrix, where A is an odd number");
     }
+    const filterIndexOffset = Math.floor(filter.length / 2);
     let originData =  imgData.data;
     let outputData = new Uint8ClampedArray(imgData.data);;
     for(let i=0; i<outputData.length; i+=4) { /* RGBA */
         let r = 0,  g = 0,  b = 0;
-        for (let j = 0; j < 9; j++) {
-            let k = i+j*4-(4*4) ; // k = pixel to set + current filter index * RGBA - (offset to reach beginning of filter * RGBA)
+        for (let j = 0; j < filter.length; j++) {
+            let k = i+j*4-(filterIndexOffset*4) ; // k = pixel to set + current filter index * RGBA - (offset to reach beginning of filter * RGBA)
             if (k < 0 || k >= originData.length) {
                 continue; // If k is outside the image
                 // Known bug: Since im not keeping track of image width in this process, at the edges of the image, one pixel from the previous/next row will be used in the matrix for the current pixel.
@@ -77,6 +78,15 @@ effects[Effect.boxblur] = (canvas) => singleConvolutionEffect(canvas, [
     1/9, 1/9, 1/9, 
     1/9, 1/9, 1/9
 ]);
+effects[Effect.gaussianblur] = (canvas) => singleConvolutionEffect(canvas, [ /* 7x7 Gaussian blur matrix from wikipedia (https://en.wikipedia.org/wiki/Gaussian_blur) */
+    0.00000067,	0.00002292,	0.00019117,	0.00038771,	0.00019117,	0.00002292,	0.00000067,
+    0.00002292,	0.00078634,	0.00655965,	0.01330373,	0.00655965,	0.00078633,	0.00002292,
+    0.00019117,	0.00655965,	0.05472157,	0.11098164,	0.05472157,	0.00655965,	0.00019117,
+    0.00038771,	0.01330373,	0.11098164,	0.22508352,	0.11098164,	0.01330373,	0.00038771,
+    0.00019117,	0.00655965,	0.05472157,	0.11098164,	0.05472157,	0.00655965,	0.00019117,
+    0.00002292,	0.00078633,	0.00655965,	0.01330373,	0.00655965,	0.00078633,	0.00002292,
+    0.00000067,	0.00002292,	0.00019117,	0.00038771,	0.00019117,	0.00002292,	0.00000067
+]);
 effects[Effect.sharpen] = (canvas) => singleConvolutionEffect(canvas, [
     0, -1,  0,
     -1,  5, -1,
@@ -103,6 +113,10 @@ effects[Effect.matrix] = (canvas) => compositeEffect(canvas, [
     Effect.sharpen,
     Effect.sharpen,
     Effect.remove_red
+]);
+effects[Effect.hardblur] = (canvas) => compositeEffect(canvas, [ /* Gaussian blur * 10 */
+    Effect.gaussianblur, Effect.gaussianblur, Effect.gaussianblur, Effect.gaussianblur, Effect.gaussianblur,
+    Effect.gaussianblur, Effect.gaussianblur, Effect.gaussianblur, Effect.gaussianblur, Effect.gaussianblur
 ]);
 
 effects[Effect.threshold] = function(canvas: HTMLCanvasElement) {
