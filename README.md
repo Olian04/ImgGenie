@@ -12,7 +12,7 @@ Silly extension for manipulating images on websites.
 * [ ] Color mask
 * [X] Negate color channel
 * [X] Edge detection
-* [ ] Gaussian blur
+* [X] Gaussian blur
 * [X] Box blur
 * [X] Sharpen
 * [X] Sobel Filter
