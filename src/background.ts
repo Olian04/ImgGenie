@@ -38,7 +38,17 @@ createMultipleEffectButtons([
     {
         title: "Reset",
         effect: Effect.reset
+    },
+    {
+        title: "Random",
+        effect: Effect.random
     }
+    /* TODO: Replace window.localStorage with storage from chrome extension api, since the popup page is considered its own domain localStorage wont work.
+    {
+        title: "Custom Convolution",
+        effect: Effect.custom_convolution
+    }
+    */
 ]);
 
 

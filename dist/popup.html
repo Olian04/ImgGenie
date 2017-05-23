@@ -2,22 +2,32 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Getting Started Extension's Popup</title>
+    <title>ImgGenie</title>
     <style>
       body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
+        width: 150px;
       }
     </style>
     <script src="js/vendor.js"></script>
   </head>
   <body>
-    <ul style="min-width: 700px;">
-    <li>Current URL: <span id="url"></span></li>
-    <li>Current Time: <span id="time"></span></li>
-    </ul>
-    <button id="countUp">count up</button>
-    <button id="changeBackground">change background</button>
+    <center>
+      <label for="customMatrix"><b>Custom Convolution</b></label>
+      <div id="customMatrix">
+            <input type="text" value="1" size="3">
+            <input type="text" value="1" size="3">
+            <input type="text" value="1" size="3">
+            <br>
+            <input type="text" value="1" size="3">
+            <input type="text" value="0.7" size="3">
+            <input type="text" value="-1" size="3">
+            <br>
+            <input type="text" value="-1" size="3">
+            <input type="text" value="-1" size="3">
+            <input type="text" value="-1" size="3">
+            <br>
+        </div>
+      </center>
     <script src="js/popup.js"></script>
   </body>
 </html>

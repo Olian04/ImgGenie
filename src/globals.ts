@@ -1,5 +1,6 @@
 export enum Effect {
     reset,
+    random,
     remove_red,
     remove_green,
     remove_blue,
@@ -11,7 +12,8 @@ export enum Effect {
     sobelfilter,
     highlight_edges,
     threshold,
-    matrix
+    matrix,
+    custom_convolution
 }
 
 //TODO: Implement Convolution filters after having read this guide https://www.html5rocks.com/en/tutorials/canvas/imagefilters/
