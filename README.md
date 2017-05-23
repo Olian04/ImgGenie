@@ -1,4 +1,4 @@
-# ImgGenie
+# [ImgGenie](https://chrome.google.com/webstore/detail/imggenie/ledidodlffonochbejoldpombnlhfdhh)
 Silly extension for manipulating images on websites.
 
 ## Planned feature
