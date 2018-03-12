@@ -15,8 +15,7 @@
     "url": "https://github.com/Olian04/ImgGenie.git"
   },
   "dependencies": {
-    "jquery": "~3.2.1",
-    "moment": "~2.18.1"
+    "jquery": "~3.2.1"
   },
   "devDependencies": {
     "@types/chrome": "~0.0.46",
